@@ -97,7 +97,21 @@
     .warning-body p { margin-bottom: 8px; }
     .warning-body p:last-child { margin-bottom: 0; }
 
-    /* MÉCANISME · 4 étapes */
+    /* MÉCANISME · split layout (vidéo | explication) */
+    .mech-split { display: grid; grid-template-columns: 340px 1fr; gap: 36px; align-items: center; background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 30px; margin-top: 40px; box-shadow: 0 6px 22px rgba(27,34,134,0.06); }
+    .mech-split-video { border-radius: 14px; overflow: hidden; background: #000; }
+    .mech-split-video video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; display: block; }
+    .mech-split-body .mech-header { text-align: left; margin: 0 0 20px; }
+    .mech-split-body .mech-title { font-size: 26px; }
+    .mech-split-body .mech-subtitle { margin: 0 0 24px; font-size: 14.5px; }
+    .mech-split-body .mech-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 0; }
+    .mech-split-body .mech-step { padding: 16px 14px; }
+    .mech-split-body .mech-step-title { font-size: 12.5px; }
+    .mech-split-body .mech-step-desc { font-size: 12px; }
+    .mech-split-body .mech-dot { width: 42px; height: 42px; margin: 10px auto 12px; }
+    @media (max-width: 900px) { .mech-split { grid-template-columns: 1fr; } .mech-split-video video { max-width: 300px; margin: 0 auto; aspect-ratio: 9/16; } }
+
+    /* MÉCANISME · 4 étapes (fallback global) */
     .mech-header { text-align: center; margin: 60px 0 30px; }
     .mech-eyebrow { display: inline-block; background: linear-gradient(135deg, var(--violet), #A77CE8); color: var(--white); font-family: 'Manrope', sans-serif; font-size: 11px; letter-spacing: 2.4px; text-transform: uppercase; font-weight: 800; padding: 7px 16px; border-radius: 999px; margin-bottom: 18px; }
     .mech-title { font-family: 'Manrope', sans-serif; font-size: 32px; font-weight: 800; color: var(--blue-deep); line-height: 1.15; letter-spacing: -0.6px; margin-bottom: 12px; }
@@ -246,40 +260,48 @@
         </div>
       </div>
 
-      <!-- MÉCANISME · 4 étapes -->
-      <div class="mech-header">
-        <h2 class="mech-title">Le mécanisme en 4 étapes</h2>
-        <p class="mech-subtitle">Cette <strong>transformation en direct</strong> est ton argument le plus puissant. Voici exactement ce qui se passe.</p>
-      </div>
-
-      <div class="mech-grid">
-        <div class="mech-step violet">
-          <div class="mech-step-num">1</div>
-          <span class="mech-dot violet"></span>
-          <div class="mech-badge violet">Violet</div>
-          <div class="mech-step-title">Tu colles ton Spot</div>
-          <div class="mech-step-desc">Le sticker apparaît <strong>violet</strong> — signal : peau non protégée, UV présents.</div>
+      <!-- MÉCANISME · split vidéo + 4 étapes -->
+      <div class="mech-split">
+        <div class="mech-split-video">
+          <video controls playsinline preload="metadata" poster="mecanisme.jpg">
+            <source src="mecanisme.mp4" type="video/mp4">
+          </video>
         </div>
-        <div class="mech-step transparent">
-          <div class="mech-step-num">2</div>
-          <span class="mech-dot transparent"></span>
-          <div class="mech-badge transparent">Transparent</div>
-          <div class="mech-step-title">Tu appliques ta crème</div>
-          <div class="mech-step-desc">Quelques minutes plus tard, le Spot devient <strong>transparent</strong> — tu es protégé·e.</div>
-        </div>
-        <div class="mech-step transparent">
-          <div class="mech-step-num">3</div>
-          <span class="mech-dot transparent"></span>
-          <div class="mech-badge transparent">Transparent</div>
-          <div class="mech-step-title">Tu profites du soleil</div>
-          <div class="mech-step-desc">Le Spot reste transparent — la protection tient bon.</div>
-        </div>
-        <div class="mech-step violet">
-          <div class="mech-step-num">4</div>
-          <span class="mech-dot violet"></span>
-          <div class="mech-badge violet">Violet</div>
-          <div class="mech-step-title">Après quelques heures</div>
-          <div class="mech-step-desc">Le Spot commence à re-virer au <strong>violet</strong> — remets de la crème maintenant.</div>
+        <div class="mech-split-body">
+          <div class="mech-header">
+            <h2 class="mech-title">Le mécanisme en 4 étapes</h2>
+            <p class="mech-subtitle">Cette <strong>transformation en direct</strong> est ton argument le plus puissant. Voici exactement ce qui se passe.</p>
+          </div>
+          <div class="mech-grid">
+            <div class="mech-step violet">
+              <div class="mech-step-num">1</div>
+              <span class="mech-dot violet"></span>
+              <div class="mech-badge violet">Violet</div>
+              <div class="mech-step-title">Tu colles ton Spot</div>
+              <div class="mech-step-desc">Le sticker apparaît <strong>violet</strong> — peau non protégée.</div>
+            </div>
+            <div class="mech-step transparent">
+              <div class="mech-step-num">2</div>
+              <span class="mech-dot transparent"></span>
+              <div class="mech-badge transparent">Transparent</div>
+              <div class="mech-step-title">Tu appliques ta crème</div>
+              <div class="mech-step-desc">Le Spot devient <strong>transparent</strong> — protégé·e.</div>
+            </div>
+            <div class="mech-step transparent">
+              <div class="mech-step-num">3</div>
+              <span class="mech-dot transparent"></span>
+              <div class="mech-badge transparent">Transparent</div>
+              <div class="mech-step-title">Tu profites du soleil</div>
+              <div class="mech-step-desc">Le Spot reste transparent — la protection tient.</div>
+            </div>
+            <div class="mech-step violet">
+              <div class="mech-step-num">4</div>
+              <span class="mech-dot violet"></span>
+              <div class="mech-badge violet">Violet</div>
+              <div class="mech-step-title">Après quelques heures</div>
+              <div class="mech-step-desc">Re-vire au <strong>violet</strong> — remets de la crème.</div>
+            </div>
+          </div>
         </div>
       </div>
 
