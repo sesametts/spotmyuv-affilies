@@ -163,6 +163,26 @@
       .warning-header { flex-direction: column; text-align: center; align-items: center; }
     }
 
+    /* BIBLIOTHÈQUE */
+    .biblio-section { padding: 60px 0 20px; }
+    .biblio-header { text-align: center; margin-bottom: 36px; }
+    .biblio-eyebrow { display: inline-block; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: #3A2705; font-family: 'Manrope', sans-serif; font-size: 11px; letter-spacing: 2.4px; text-transform: uppercase; font-weight: 800; padding: 7px 16px; border-radius: 999px; margin-bottom: 18px; }
+    .biblio-title { font-family: 'Manrope', sans-serif; font-size: 32px; font-weight: 800; color: var(--blue-deep); line-height: 1.15; letter-spacing: -0.6px; margin-bottom: 12px; }
+    .biblio-intro { font-size: 15px; color: var(--text-soft); max-width: 640px; margin: 0 auto; line-height: 1.65; }
+    .biblio-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 36px; }
+    .biblio-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
+    .biblio-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(27,34,134,0.14); }
+    .biblio-thumb { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; display: block; background: var(--blue-pale); }
+    .biblio-card-num { position: absolute; top: 10px; left: 10px; background: rgba(15,24,99,0.85); color: var(--white); font-family: 'Manrope', sans-serif; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 999px; }
+    /* Lightbox modal (video only) */
+    .lib-modal { display: none; position: fixed; inset: 0; background: rgba(15,24,99,0.85); z-index: 999; padding: 20px; align-items: center; justify-content: center; }
+    .lib-modal.open { display: flex; }
+    .lib-modal-video-wrap { background: #000; border-radius: 14px; overflow: hidden; max-width: 420px; width: 100%; position: relative; }
+    .lib-modal-video-wrap video { width: 100%; aspect-ratio: 9/16; object-fit: cover; display: block; }
+    .lib-modal-close { position: absolute; top: -14px; right: -14px; background: var(--white); border: 1px solid var(--border); border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; z-index: 2; box-shadow: 0 6px 14px rgba(0,0,0,0.3); }
+    @media (max-width: 900px) { .biblio-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .biblio-grid { grid-template-columns: 1fr; } }
+
     /* FOOTER */
     .footer { background: var(--blue-deep); color: rgba(255,255,255,0.7); padding: 40px 32px; text-align: center; margin-top: 100px; font-size: 13px; }
 
@@ -222,7 +242,7 @@
 
     <nav class="pill-nav">
       <a class="pill" href="#mecanisme"><span class="pill-icon">🚀</span> Commencez par ici <span style="margin-left:6px;">→</span></a>
-      <a class="pill gold" href="#coming-soon"><span class="pill-icon">📚</span> Bibliothèque <span style="margin-left:6px;">→</span></a>
+      <a class="pill gold" href="#bibliotheque"><span class="pill-icon">📚</span> Bibliothèque <span style="margin-left:6px;">→</span></a>
     </nav>
   </section>
 
@@ -309,7 +329,57 @@
 
 
     </section>
+
+    <!-- BIBLIOTHÈQUE -->
+    <section class="biblio-section" id="bibliotheque">
+      <div class="biblio-header">
+        <div class="biblio-eyebrow">📚 Bibliothèque · Vidéos référence</div>
+        <h2 class="biblio-title">7 vidéos qui cartonnent sur les stickers UV</h2>
+        <p class="biblio-intro">Toutes marques confondues — inspire-toi des formats qui vendent vraiment ce type de produit. Clique sur une vignette pour voir la vidéo en entier.</p>
+      </div>
+      <div class="biblio-grid">
+        <div class="biblio-card" data-vid="1"><img class="biblio-thumb" src="lib1.jpg" alt="Vidéo 1"><div class="biblio-card-num">#1</div></div>
+        <div class="biblio-card" data-vid="2"><img class="biblio-thumb" src="lib2.jpg" alt="Vidéo 2"><div class="biblio-card-num">#2</div></div>
+        <div class="biblio-card" data-vid="3"><img class="biblio-thumb" src="lib3.jpg" alt="Vidéo 3"><div class="biblio-card-num">#3</div></div>
+        <div class="biblio-card" data-vid="4"><img class="biblio-thumb" src="lib4.jpg" alt="Vidéo 4"><div class="biblio-card-num">#4</div></div>
+        <div class="biblio-card" data-vid="5"><img class="biblio-thumb" src="lib5.jpg" alt="Vidéo 5"><div class="biblio-card-num">#5</div></div>
+        <div class="biblio-card" data-vid="6"><img class="biblio-thumb" src="lib6.jpg" alt="Vidéo 6"><div class="biblio-card-num">#6</div></div>
+        <div class="biblio-card" data-vid="7"><img class="biblio-thumb" src="lib7.jpg" alt="Vidéo 7"><div class="biblio-card-num">#7</div></div>
+      </div>
+    </section>
   </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lib-modal" id="lib-modal">
+    <div class="lib-modal-video-wrap">
+      <button class="lib-modal-close" onclick="closeLibModal()">×</button>
+      <video id="lib-modal-video" controls playsinline preload="metadata"></video>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.biblio-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const n = card.dataset.vid;
+        const vid = document.getElementById('lib-modal-video');
+        vid.src = 'lib' + n + '.mp4';
+        vid.load();
+        vid.play();
+        document.getElementById('lib-modal').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    function closeLibModal() {
+      const vid = document.getElementById('lib-modal-video');
+      vid.pause();
+      vid.src = '';
+      document.getElementById('lib-modal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('lib-modal').addEventListener('click', e => {
+      if (e.target.id === 'lib-modal') closeLibModal();
+    });
+  </script>
 
   <footer class="footer">
     SpotMyUV × Sesame · Programme affiliés TikTok Shop France
