@@ -84,6 +84,64 @@
     .cycle-img { max-width: 780px; width: 100%; margin: 0 auto 20px; display: block; border-radius: 12px; }
     .cycle-text { font-size: 14.5px; color: var(--text-soft); line-height: 1.65; max-width: 640px; margin: 0 auto; }
 
+    /* WARNING CARD · Le piège */
+    .warning-card { background: linear-gradient(135deg, #FFF5F5 0%, #FFEBE8 100%); border: 1.5px solid #FFB4A8; border-left: 6px solid #D9342B; border-radius: 16px; padding: 32px 36px; margin-bottom: 30px; box-shadow: 0 6px 22px rgba(217,52,43,0.10); position: relative; overflow: hidden; }
+    .warning-card::before { content:''; position:absolute; top:0; right:0; width:220px; height:220px; background: radial-gradient(circle, rgba(217,52,43,0.08), transparent 65%); pointer-events:none; }
+    .warning-header { display: flex; gap: 20px; align-items: center; margin-bottom: 18px; }
+    .warning-icon { background: #D9342B; color: var(--white); width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 800; flex-shrink: 0; box-shadow: 0 4px 14px rgba(217,52,43,0.30); animation: pulseWarn 2.4s ease-in-out infinite; }
+    @keyframes pulseWarn { 0%,100% { box-shadow: 0 0 0 0 rgba(217,52,43,0.35), 0 4px 14px rgba(217,52,43,0.30); } 50% { box-shadow: 0 0 0 12px rgba(217,52,43,0), 0 4px 14px rgba(217,52,43,0.30); } }
+    .warning-label { font-family: 'Manrope', sans-serif; font-size: 11px; letter-spacing: 2.4px; text-transform: uppercase; color: #A31E17; font-weight: 800; margin-bottom: 6px; }
+    .warning-title { font-family: 'Manrope', sans-serif; font-size: 22px; font-weight: 800; color: #6B140F; line-height: 1.25; letter-spacing: -0.2px; }
+    .warning-body { font-size: 15px; color: #5A1811; line-height: 1.65; }
+    .warning-body strong { color: #6B140F; font-weight: 800; }
+    .warning-body p { margin-bottom: 8px; }
+    .warning-body p:last-child { margin-bottom: 0; }
+
+    /* MÉCANISME · 4 étapes */
+    .mech-header { text-align: center; margin: 60px 0 30px; }
+    .mech-eyebrow { display: inline-block; background: linear-gradient(135deg, var(--violet), #A77CE8); color: var(--white); font-family: 'Manrope', sans-serif; font-size: 11px; letter-spacing: 2.4px; text-transform: uppercase; font-weight: 800; padding: 7px 16px; border-radius: 999px; margin-bottom: 18px; }
+    .mech-title { font-family: 'Manrope', sans-serif; font-size: 32px; font-weight: 800; color: var(--blue-deep); line-height: 1.15; letter-spacing: -0.6px; margin-bottom: 12px; }
+    .mech-subtitle { font-size: 15px; color: var(--text-soft); max-width: 620px; margin: 0 auto; line-height: 1.65; }
+    .mech-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 30px; }
+    .mech-step { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 24px 22px; text-align: center; position: relative; transition: transform 0.2s; }
+    .mech-step:hover { transform: translateY(-4px); box-shadow: 0 10px 26px rgba(27,34,134,0.10); }
+    .mech-step-num { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--blue-deep); color: var(--white); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 800; }
+    .mech-icon { font-size: 42px; margin: 10px 0 14px; }
+    .mech-step-title { font-family: 'Manrope', sans-serif; font-size: 13.5px; font-weight: 800; color: var(--blue-deep); letter-spacing: 0.3px; text-transform: uppercase; margin-bottom: 10px; }
+    .mech-step-desc { font-size: 13.5px; color: var(--text); line-height: 1.55; }
+    .mech-step.violet { background: linear-gradient(135deg, #F5F0FF, var(--white)); border-color: #D8C5F5; }
+    .mech-step.violet .mech-step-title { color: var(--violet); }
+    .mech-step.transparent { background: linear-gradient(135deg, #EAFCF5, var(--white)); border-color: #B5EAD1; }
+    .mech-step.transparent .mech-step-title { color: #2A9D6E; }
+    .mech-step-bottom { margin-top: 24px; padding: 14px 20px; background: linear-gradient(135deg, var(--blue-pale), var(--white)); border: 1px solid var(--border); border-radius: 12px; text-align: center; font-size: 14px; color: var(--blue-deep); font-weight: 700; }
+
+    /* DOULEURS · 4 cards */
+    .pain-header { text-align: center; margin: 60px 0 30px; }
+    .pain-title { font-family: 'Manrope', sans-serif; font-size: 30px; font-weight: 800; color: var(--blue-deep); line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 12px; }
+    .pain-subtitle { font-size: 15px; color: var(--text-soft); max-width: 640px; margin: 0 auto; line-height: 1.65; }
+    .pain-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 26px; }
+    .pain-card { background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--blue); border-radius: 14px; padding: 22px 24px; display: flex; gap: 16px; align-items: flex-start; }
+    .pain-emoji { font-size: 28px; flex-shrink: 0; }
+    .pain-text { font-size: 15px; color: var(--text); line-height: 1.55; font-style: italic; }
+
+    /* FORMAT · 3 étapes tournage */
+    .fmt-card { background: linear-gradient(135deg, var(--blue-deep), var(--blue) 60%, #2A36DE); border-radius: 20px; padding: 40px; margin-top: 30px; color: var(--white); text-align: center; }
+    .fmt-badge { display: inline-block; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: #3A2705; font-family: 'Manrope', sans-serif; font-size: 10.5px; letter-spacing: 2.4px; text-transform: uppercase; font-weight: 800; padding: 7px 16px; border-radius: 999px; margin-bottom: 18px; }
+    .fmt-title { font-family: 'Manrope', sans-serif; font-size: 26px; font-weight: 800; line-height: 1.2; letter-spacing: -0.4px; margin-bottom: 12px; }
+    .fmt-subtitle { font-size: 14.5px; color: rgba(255,255,255,0.80); margin-bottom: 26px; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .fmt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; text-align: left; }
+    .fmt-step { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 18px 20px; }
+    .fmt-step-label { font-family: 'Manrope', sans-serif; font-size: 10.5px; letter-spacing: 1.4px; text-transform: uppercase; font-weight: 800; color: var(--gold-light); margin-bottom: 8px; }
+    .fmt-step-time { font-size: 11px; color: rgba(255,255,255,0.5); font-weight: 700; }
+    .fmt-step-text { font-size: 13.5px; color: rgba(255,255,255,0.85); line-height: 1.55; margin-top: 8px; }
+    .fmt-step-text em { color: var(--white); font-style: italic; }
+
+    @media (max-width: 800px) {
+      .mech-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .pain-grid, .fmt-grid { grid-template-columns: 1fr; }
+      .warning-header { flex-direction: column; text-align: center; align-items: center; }
+    }
+
     /* FOOTER */
     .footer { background: var(--blue-deep); color: rgba(255,255,255,0.7); padding: 40px 32px; text-align: center; margin-top: 100px; font-size: 13px; }
 
@@ -148,7 +206,106 @@
 
   <main class="container">
     <section class="section" id="coming-soon">
-      <div class="product-reminder">
+
+      <!-- WARNING · LE PIÈGE DES CRÉATEURS -->
+      <div class="warning-card">
+        <div class="warning-header">
+          <div class="warning-icon">⚠</div>
+          <div>
+            <div class="warning-label">Message important pour les créateurs</div>
+            <div class="warning-title">Le piège que 90% des créateurs SpotMyUV font</div>
+          </div>
+        </div>
+        <div class="warning-body">
+          <p>Vous avez un <strong>produit viral entre les mains</strong>, en pleine saison — et vous montrez juste la boîte.</p>
+          <p>Les gens veulent voir la <strong>TRANSFORMATION</strong>, pas l'emballage.</p>
+          <p>Les gens veulent qu'on leur parle de leur <strong>peur</strong> (coup de soleil, enfants pas protégés, peau qui vieillit), pas des specs du produit.</p>
+        </div>
+      </div>
+
+      <!-- MÉCANISME · 4 étapes -->
+      <div class="mech-header">
+        <div class="mech-eyebrow">🔬 Le vrai mécanisme</div>
+        <h2 class="mech-title">Le mécanisme (que personne n'explique bien)</h2>
+        <p class="mech-subtitle">Voilà ce qu'il faut <strong>FILMER dans tes vidéos</strong> — pas la boîte. La transformation du sticker, c'est CE qui vend.</p>
+      </div>
+
+      <div class="mech-grid">
+        <div class="mech-step violet">
+          <div class="mech-step-num">1</div>
+          <div class="mech-icon">🟣</div>
+          <div class="mech-step-title">Tu colles ton Spot</div>
+          <div class="mech-step-desc">Le sticker apparaît <strong>VIOLET</strong> — signal : peau non protégée, UV présents.</div>
+        </div>
+        <div class="mech-step transparent">
+          <div class="mech-step-num">2</div>
+          <div class="mech-icon">☀️</div>
+          <div class="mech-step-title">Tu appliques ta crème</div>
+          <div class="mech-step-desc">Quelques minutes plus tard, le Spot devient <strong>TRANSPARENT</strong> — tu es protégé·e.</div>
+        </div>
+        <div class="mech-step transparent">
+          <div class="mech-step-num">3</div>
+          <div class="mech-icon">🏖️</div>
+          <div class="mech-step-title">Tu profites du soleil</div>
+          <div class="mech-step-desc">Le Spot reste transparent — la protection tient bon.</div>
+        </div>
+        <div class="mech-step violet">
+          <div class="mech-step-num">4</div>
+          <div class="mech-icon">🟣</div>
+          <div class="mech-step-title">Après quelques heures</div>
+          <div class="mech-step-desc">Le Spot commence à re-virer au <strong>VIOLET</strong> — remets de la crème maintenant.</div>
+        </div>
+      </div>
+
+      <div class="mech-step-bottom">🎥 <strong>Ça</strong>, c'est ce qu'il faut filmer. La transformation en direct = ton meilleur argument de vente.</div>
+
+      <!-- DOULEURS · 4 cards -->
+      <div class="pain-header">
+        <h2 class="pain-title">💔 Les vraies douleurs à évoquer</h2>
+        <p class="pain-subtitle">Arrête de parler des specs du produit. Parle de ce que tes viewers <strong>ressentent vraiment</strong>.</p>
+      </div>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-emoji">🥵</div>
+          <div class="pain-text">« Se réveiller la nuit avec la peau brûlée qui pique — impossible de dormir. »</div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-emoji">👶</div>
+          <div class="pain-text">« Rentrer de la plage et voir ses enfants tout rouges — la culpabilité qui vient avec. »</div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-emoji">⏰</div>
+          <div class="pain-text">« Ne jamais savoir QUAND recrémer — trop tôt = gaspillage, trop tard = coup de soleil. »</div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-emoji">👵</div>
+          <div class="pain-text">« Chaque coup de soleil accélère le vieillissement — rides, taches, cancer de la peau. »</div>
+        </div>
+      </div>
+
+      <!-- FORMAT · 3 étapes tournage -->
+      <div class="fmt-card">
+        <div class="fmt-badge">🎬 Le format qui vend vraiment</div>
+        <h3 class="fmt-title">3 étapes pour ta prochaine vidéo</h3>
+        <p class="fmt-subtitle">Copie ce squelette. Adapte le hook à ta communauté. Filme le mécanisme en direct.</p>
+
+        <div class="fmt-grid">
+          <div class="fmt-step">
+            <div class="fmt-step-label">Hook · <span class="fmt-step-time">0-3s</span></div>
+            <div class="fmt-step-text"><em>« Rentrer de la plage brûlée et ne pas pouvoir dormir la nuit… je te montre comment j'ai arrêté ça. »</em></div>
+          </div>
+          <div class="fmt-step">
+            <div class="fmt-step-label">Mécanisme en action · <span class="fmt-step-time">3-15s</span></div>
+            <div class="fmt-step-text">Filme le Spot <strong>violet</strong> → applique ta crème → montre-le devenir <strong>transparent</strong> (accéléré ou time-lapse).</div>
+          </div>
+          <div class="fmt-step">
+            <div class="fmt-step-label">CTA discret · <span class="fmt-step-time">15-20s</span></div>
+            <div class="fmt-step-text"><em>« Le mien est dans la petite pochette orange »</em> — pas d'argumentaire lourd, juste un signal.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-reminder" style="margin-top: 40px;">
         <img src="product.png" alt="SpotMyUV — Sticker UV qui change de couleur">
         <div>
           <div class="product-reminder-label">📌 Le produit</div>
