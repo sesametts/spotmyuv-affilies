@@ -174,13 +174,22 @@
     .biblio-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(27,34,134,0.14); }
     .biblio-thumb { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; display: block; background: var(--blue-pale); }
     .biblio-card-num { position: absolute; top: 10px; left: 10px; background: rgba(15,24,99,0.85); color: var(--white); font-family: 'Manrope', sans-serif; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 999px; }
-    /* Lightbox modal (video only) */
-    .lib-modal { display: none; position: fixed; inset: 0; background: rgba(15,24,99,0.85); z-index: 999; padding: 20px; align-items: center; justify-content: center; }
-    .lib-modal.open { display: flex; }
-    .lib-modal-video-wrap { background: #000; border-radius: 14px; overflow: hidden; max-width: 420px; width: 100%; position: relative; }
-    .lib-modal-video-wrap video { width: 100%; aspect-ratio: 9/16; object-fit: cover; display: block; }
-    .lib-modal-close { position: absolute; top: -14px; right: -14px; background: var(--white); border: 1px solid var(--border); border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; z-index: 2; box-shadow: 0 6px 14px rgba(0,0,0,0.3); }
-    @media (max-width: 900px) { .biblio-grid { grid-template-columns: repeat(2, 1fr); } }
+    /* Lightbox modal · video + analyse */
+    .lib-modal { display: none; position: fixed; inset: 0; background: rgba(15,24,99,0.75); z-index: 999; padding: 30px 20px; overflow-y: auto; }
+    .lib-modal-inner { background: var(--white); max-width: 1000px; margin: 0 auto; border-radius: 18px; overflow: hidden; display: grid; grid-template-columns: 340px 1fr; position: relative; }
+    .lib-modal-video-wrap { background: #000; display: flex; align-items: center; }
+    .lib-modal-video-wrap video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; }
+    .lib-modal-body { padding: 30px 32px; overflow-y: auto; max-height: 85vh; }
+    .lib-modal-close { position: absolute; top: 12px; right: 12px; background: var(--white); border: 1px solid var(--border); border-radius: 50%; width: 36px; height: 36px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; z-index: 2; }
+    .lib-modal-tag { display: inline-block; background: var(--blue-pale); color: var(--blue-deep); font-family: 'Manrope', sans-serif; font-size: 10.5px; letter-spacing: 1.4px; text-transform: uppercase; font-weight: 800; padding: 5px 11px; border-radius: 999px; margin-right: 6px; margin-bottom: 8px; }
+    .lib-modal-title { font-family: 'Manrope', sans-serif; font-size: 22px; font-weight: 800; color: var(--blue-deep); margin: 8px 0 20px; line-height: 1.2; letter-spacing: -0.3px; }
+    .lib-block { background: var(--off-white); border: 1px solid var(--border); border-left: 4px solid var(--blue); border-radius: 10px; padding: 14px 18px; margin-bottom: 12px; }
+    .lib-block-label { font-family: 'Manrope', sans-serif; font-size: 10.5px; letter-spacing: 1.4px; text-transform: uppercase; font-weight: 800; color: var(--blue-deep); margin-bottom: 6px; }
+    .lib-block-text { font-size: 14px; color: var(--text); line-height: 1.6; }
+    .lib-block-text strong { color: var(--blue-deep); }
+    .lib-block.notes { border-left-color: var(--gold); background: linear-gradient(135deg, #FFFBEB, var(--white)); }
+    .lib-block.notes .lib-block-label { color: #7A5300; }
+    @media (max-width: 900px) { .biblio-grid { grid-template-columns: repeat(2, 1fr); } .lib-modal-inner { grid-template-columns: 1fr; } .lib-modal-video-wrap video { max-height: 60vh; aspect-ratio: auto; } }
     @media (max-width: 480px) { .biblio-grid { grid-template-columns: 1fr; } }
 
     /* FOOTER */
@@ -335,7 +344,7 @@
       <div class="biblio-header">
         <div class="biblio-eyebrow">📚 Bibliothèque · Vidéos référence</div>
         <h2 class="biblio-title">7 vidéos qui cartonnent sur les stickers UV</h2>
-        <p class="biblio-intro">Toutes marques confondues — inspire-toi des formats qui vendent vraiment ce type de produit. Clique sur une vignette pour voir la vidéo en entier.</p>
+        <p class="biblio-intro">Toutes marques confondues — inspire-toi des formats qui vendent vraiment ce type de produit. Clique sur une vignette pour voir la vidéo <strong>+ analyse hook / format / CTA + traduction FR</strong>.</p>
       </div>
       <div class="biblio-grid">
         <div class="biblio-card" data-vid="1"><img class="biblio-thumb" src="lib1.jpg" alt="Vidéo 1"><div class="biblio-card-num">#1</div></div>
@@ -349,23 +358,113 @@
     </section>
   </main>
 
-  <!-- LIGHTBOX -->
+  <!-- LIGHTBOX · vidéo + analyse -->
   <div class="lib-modal" id="lib-modal">
-    <div class="lib-modal-video-wrap">
+    <div class="lib-modal-inner">
       <button class="lib-modal-close" onclick="closeLibModal()">×</button>
-      <video id="lib-modal-video" controls playsinline preload="metadata"></video>
+      <div class="lib-modal-video-wrap">
+        <video id="lib-modal-video" controls playsinline preload="metadata"></video>
+      </div>
+      <div class="lib-modal-body">
+        <span class="lib-modal-tag" id="lib-num">#1</span>
+        <span class="lib-modal-tag" id="lib-brand">brand</span>
+        <h3 class="lib-modal-title" id="lib-title">Titre</h3>
+
+        <div class="lib-block"><div class="lib-block-label">🎣 Hook</div><div class="lib-block-text" id="lib-hook">—</div></div>
+        <div class="lib-block"><div class="lib-block-label">🎬 Format</div><div class="lib-block-text" id="lib-format">—</div></div>
+        <div class="lib-block"><div class="lib-block-label">📣 CTA</div><div class="lib-block-text" id="lib-cta">—</div></div>
+        <div class="lib-block"><div class="lib-block-label">📝 Transcript original (EN)</div><div class="lib-block-text" id="lib-orig">—</div></div>
+        <div class="lib-block"><div class="lib-block-label">🇫🇷 Traduction FR</div><div class="lib-block-text" id="lib-fr">—</div></div>
+        <div class="lib-block notes"><div class="lib-block-label">💡 Notes pour SpotMyUV</div><div class="lib-block-text" id="lib-notes">—</div></div>
+      </div>
     </div>
   </div>
 
   <script>
+    window.__LIB_DATA__ = {
+      "1": {
+        "brand": "Démo silencieuse (song only)",
+        "original": "(Vidéo sans voix — démo visuelle pure de la transformation du sticker + musique tendance en fond)",
+        "traduction_fr": "Aucune parole. Le sticker apparaît violet, la crème est appliquée, en quelques secondes il devient transparent. Musique tendance en fond, texte à l'écran minimal.",
+        "hook": "Gros plan sur le sticker violet + main qui applique la crème + le violet disparaît sous nos yeux (0-3s)",
+        "format": "Démo silencieuse · Close-up macro + trending sound + texte à l'écran court",
+        "cta": "Aucun CTA verbal — la transformation visuelle vend seule",
+        "notes": "Format ultra puissant : pas besoin de parler ni de te filmer. Un plan serré main+sticker+crème avec un son tendance = zéro friction créative, résultat maximal. À reproduire quand tu ne veux pas te montrer OU quand tu veux prouver le mécanisme sans distraction."
+      },
+      "2": {
+        "brand": "Micro-créateur US · explication mécanisme",
+        "original": "Got the viral UV detection stickers and just using one of them lasted me all day long. Purple means it's time to apply your sunscreen. When it's clear, you're protected, and when it turns purple again, it's time to reapply your sunscreen again.",
+        "traduction_fr": "J'ai acheté les fameux stickers UV virales — un seul m'a duré toute la journée. Violet = il est temps d'appliquer ta crème solaire. Transparent = tu es protégé·e. Redevient violet = c'est reparti pour une couche.",
+        "hook": "« J'ai acheté les fameux stickers UV » — positionnement immédiat du produit VIRAL (0-2s)",
+        "format": "Explication mécanisme en 3 phrases · Court, punchy, cycle complet expliqué",
+        "cta": "Aucun CTA — le mécanisme clair suffit à convaincre",
+        "notes": "Le meilleur script pédagogique de la biblio. En 30 secondes tu couvres les 3 états (violet / transparent / violet again). Structure à copier-coller pour ta prochaine vidéo SpotMyUV : 3 phrases, 3 états, une seule crème solaire à l'écran."
+      },
+      "3": {
+        "brand": "Créatrice éducation skincare · Dermatru tech",
+        "original": "This is a sticker that lets you know when you need to reapply sunscreen. The Spot My UV stickers with Dermatru technology changes color when it's time for you to reapply. Simply stick it on, apply sunscreen, and activate with direct sunlight. It's waterproof, convenient, and can be reused throughout the day. I was shocked to find that I actually needed to reapply almost every hour when in the sun. Follow to find out what happens when I'm mostly indoors.",
+        "traduction_fr": "C'est un sticker qui te dit quand recrémer. Les SpotMyUV avec la techno Dermatru changent de couleur au bon moment. Colle-le, applique ta crème, active-le avec le soleil direct. Waterproof, pratique, réutilisable toute la journée. J'ai été CHOQUÉE de découvrir qu'il fallait recrémer presque toutes les heures au soleil. Suis-moi pour voir ce qui se passe quand je suis surtout à l'intérieur.",
+        "hook": "Nomme le produit + techno (autorité) puis surprise personnelle : « J'ai été CHOQUÉE » (0-5s)",
+        "format": "Éducation + POV shock + cliffhanger follow",
+        "cta": "« Suis-moi pour voir ce qui se passe quand je suis à l'intérieur » — teasing part 2 (rétention audience)",
+        "notes": "Combo gagnant : autorité (nomme la techno Dermatru) + émotion (shocked) + cliffhanger (part 2). Reproduis le « J'ai été CHOQUÉE de découvrir que » — surprise personnelle vend 10x mieux qu'une claim marketing. Toujours finir par un teaser part 2 pour ramener l'algo."
+      },
+      "4": {
+        "brand": "Créatrice lifestyle vlog · Disneyland",
+        "original": "So I went to Disneyland yesterday and I bought this UV sticker that tells you when to reapply your sunscreen. Of course, I was being annoying so I applied it on every single person in the group. The sticker turns purple when the sunscreen needs to be reapplied or when the UV radiates to skin and that makes it turn purple. It's transparent like this when enough sunscreen is applied. Each sticker lasts up to 12 hours which I think is pretty cool for the entire day of Disneyland. Sunscreen is super crucial at Disneyland because it's so so sunny. Like there was a thunderstorm on the way there but then it was like super sunny afterwards. I don't understand California weather. But then after a rest break, I had to reapply my sunscreen because you see that my sticker is purple. Super cool.",
+        "traduction_fr": "Hier je suis allée à Disneyland et j'ai acheté ce sticker UV qui te dit quand recrémer. Bien sûr j'étais chiante alors j'en ai collé un à chaque personne du groupe. Le sticker devient violet quand il faut recrémer — les UV le font virer au violet. Transparent = assez de crème appliquée. Chaque sticker dure jusqu'à 12h — parfait pour une journée entière à Disneyland. La crème solaire est cruciale là-bas, c'est super ensoleillé. Il y a eu un orage sur la route puis grand soleil après — je pige rien à la météo californienne. Après une pause, j'ai dû recrémer — tu vois mon sticker est violet. Trop cool.",
+        "hook": "« Hier je suis allée à Disneyland et j'ai acheté ce sticker » — situation ultra concrète + destination fun (0-3s)",
+        "format": "Vlog situation réelle · Storytelling + démo sur plusieurs personnes du groupe",
+        "cta": "Aucun CTA direct — le vlog authentique vend seul",
+        "notes": "Format vlog contexte = confiance max. La situation SPÉCIFIQUE (parc, journée entière, groupe d'amis) rend le produit ULTRA identifiable. Reproduis avec ton propre contexte FR : « Hier je suis allée à la plage / au Puy du Fou / au parc avec les kids et j'ai testé ce sticker ». La démo sur plusieurs personnes crée du social proof implicite."
+      },
+      "5": {
+        "brand": "Créatrice tests produits · timing chronométré",
+        "original": "Experts say that you need to reapply your sunscreen every two hours, and these UV stickers were made to help you to remember to do just that. A sticker starts out purple, and once sunscreen is applied, it should turn clear within one to two minutes. I tested UV stickers from the brand Spot My UV. You can find them on Amazon or Target for around $15. Here is what the sticker looks like once I put it on my skin. Just peel, stick, and take off the little triangle. And here is what the sticker looks like after the first minute. After about an hour, the sticker started to turn light purple, meaning that I wasn't fully protected from the sun. Then after two hours, the stickers are back to purple, meaning I need to reapply my sunscreen. If you're looking for an easy and fun way to remember to reapply your sunscreen this summer, these UV stickers are super helpful.",
+        "traduction_fr": "Les experts disent qu'il faut recrémer toutes les 2h — ces stickers UV sont là pour t'aider à t'en souvenir. Un sticker commence violet et devient transparent en 1-2 min une fois la crème appliquée. J'ai testé les SpotMyUV — tu les trouves sur Amazon ou Target autour de 15$. Voilà à quoi ressemble le sticker sur ma peau : tu peels, tu colles, tu enlèves le petit triangle. Voilà après la première minute. Après environ 1h le sticker vire violet clair — je ne suis plus totalement protégée. Puis après 2h, retour au violet — il faut recrémer. Si tu cherches un moyen simple et fun de te rappeler de recrémer cet été, ces stickers sont super utiles.",
+        "hook": "« Les EXPERTS disent qu'il faut recrémer toutes les 2h » — autorité + règle santé (0-3s)",
+        "format": "Test produit chronométré · Timing précis (1min / 1h / 2h) + preuve visuelle + prix visible",
+        "cta": "« Si tu cherches un moyen simple et fun de te rappeler cet été, ces stickers sont super utiles » — CTA soft summer",
+        "notes": "Structure la plus complète de la biblio. À copier tel quel : (1) autorité experts ; (2) prix visible → lève la friction ; (3) test chronométré avec timestamps réels ; (4) CTA saisonnier soft. Adapte le prix FR (15-18€) et remplace Amazon/Target par « ta boutique TikTok » avec le lien affilié en bio."
+      },
+      "6": {
+        "brand": "Créatrice court format · pain point personnel",
+        "original": "I always forget to apply sunscreen, so I love this little reminder. These are UV stickers for sunscreen. Just stick one on and apply your sunscreen. Whenever you apply your sunscreen, the sticker will turn clear and it will turn purple when it's time to apply again.",
+        "traduction_fr": "J'oublie TOUJOURS de mettre de la crème solaire — j'adore ce petit rappel. Ce sont des stickers UV pour la crème. Tu en colles un, tu appliques ta crème. Dès que tu mets la crème, le sticker devient transparent — et il redevient violet quand il faut recrémer.",
+        "hook": "« J'oublie TOUJOURS de mettre de la crème solaire » — auto-identification massive (0-2s)",
+        "format": "Court format · Pain point personnel + solution en 3 phrases (30s max)",
+        "cta": "Aucun CTA — le pain point + démo suffisent",
+        "notes": "Le format le plus court et le plus efficace de la biblio. « J'oublie toujours de mettre de la crème » = 80% des gens se reconnaissent. Pain point personnel > claim produit. Reproduis avec TON propre aveu : « J'oublie toujours » / « Je remets jamais » / « Je pensais que c'était bon pour la journée »."
+      },
+      "7": {
+        "brand": "Créatrice outdoor / travel · story time survie",
+        "original": "These UV stickers saved me on a hike in Norway. I applied the sticker, applied my sunscreen, purple turned to clear and were all protected. I set off on my hike and my phone died and I usually set an alarm every two hours to reapply sunscreen. Luckily my sticker turned a darker shade of purple as I was hiking so I knew it was time to reapply. This definitely saved me from getting a sunburn and I burned super easily so I think if you're going to buy these stickers they're definitely useful for if you're going on a hike or any sort of vacation.",
+        "traduction_fr": "Ces stickers UV m'ont SAUVÉE en rando en Norvège. J'ai collé le sticker, appliqué ma crème, violet → transparent, protégée. Je pars en rando et mon téléphone meurt — d'habitude je mets une alarme toutes les 2h pour recrémer. Heureusement mon sticker a viré d'un violet plus foncé pendant la rando — j'ai su qu'il fallait recrémer. Ça m'a clairement évité un coup de soleil (et je brûle très facilement). Si vous partez en rando ou en vacances, ces stickers sont vraiment utiles.",
+        "hook": "« Ces stickers m'ont SAUVÉE en rando en Norvège » — story time survie + destination exotique (0-3s)",
+        "format": "Story time · Péripétie (phone died) + résultat émotionnel (saved me)",
+        "cta": "« Si vous partez en rando ou en vacances, ces stickers sont vraiment utiles » — CTA usage voyage",
+        "notes": "Format « ça m'a sauvé » = engagement max. Storytelling avec péripétie (batterie morte) rend le produit HÉROS. Reproduis avec TA péripétie : « J'ai oublié de mettre l'alarme », « Je me suis endormie à la plage », « Mes kids ne restaient pas assis pour la crème ». Le sticker = allié dans l'aventure, pas juste un gadget."
+      }
+    };
+
     document.querySelectorAll('.biblio-card').forEach(card => {
       card.addEventListener('click', () => {
         const n = card.dataset.vid;
+        const d = window.__LIB_DATA__[n];
+        if (!d) return;
+        document.getElementById('lib-num').textContent = '#' + n;
+        document.getElementById('lib-brand').textContent = d.brand;
+        document.getElementById('lib-title').textContent = d.brand;
+        document.getElementById('lib-hook').textContent = d.hook;
+        document.getElementById('lib-format').textContent = d.format;
+        document.getElementById('lib-cta').textContent = d.cta;
+        document.getElementById('lib-orig').textContent = d.original;
+        document.getElementById('lib-fr').textContent = d.traduction_fr;
+        document.getElementById('lib-notes').textContent = d.notes;
         const vid = document.getElementById('lib-modal-video');
         vid.src = 'lib' + n + '.mp4';
         vid.load();
-        vid.play();
-        document.getElementById('lib-modal').classList.add('open');
+        document.getElementById('lib-modal').style.display = 'block';
         document.body.style.overflow = 'hidden';
       });
     });
@@ -373,7 +472,7 @@
       const vid = document.getElementById('lib-modal-video');
       vid.pause();
       vid.src = '';
-      document.getElementById('lib-modal').classList.remove('open');
+      document.getElementById('lib-modal').style.display = 'none';
       document.body.style.overflow = '';
     }
     document.getElementById('lib-modal').addEventListener('click', e => {
