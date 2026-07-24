@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpotMyUV — Inspirations Affiliés</title>
+  <meta name="description" content="Programme affiliés SpotMyUV · Le sticker UV qui change de couleur — décryptage vidéos, hooks et formats qui vendent sur TikTok Shop France.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #1B2286;
+      --blue-deep: #0F1863;
+      --blue-hover: #151A6E;
+      --blue-pale: #EEF0FA;
+      --white: #FFFFFF;
+      --off-white: #FBFBFD;
+      --border: #E4E6F0;
+      --text: #1A1F3D;
+      --text-soft: #6B7092;
+      --gold: #C9A227;
+      --gold-light: #E5B94D;
+      --violet: #7B4FE0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Manrope', sans-serif;
+      color: var(--text);
+      background: var(--off-white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* HEADER */
+    .site-header { background: var(--blue); padding: 30px 24px 26px; text-align: center; }
+    .site-brand { color: var(--white); font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 6px; }
+    .site-brand .divider { color: rgba(255,255,255,0.5); margin: 0 20px; font-weight: 400; }
+    .site-tag { color: rgba(255,255,255,0.65); font-family: 'Manrope', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; }
+
+    /* HERO */
+    .hero { background: var(--off-white); padding: 80px 24px 30px; text-align: center; }
+    .hero-eyebrow { color: var(--blue); font-family: 'Manrope', sans-serif; font-size: 12px; letter-spacing: 3.2px; text-transform: uppercase; font-weight: 800; margin-bottom: 32px; }
+    .hero-title { font-family: 'Manrope', sans-serif; font-size: 62px; font-weight: 800; line-height: 1.05; color: var(--blue-deep); max-width: 900px; margin: 0 auto 26px; letter-spacing: -1.5px; }
+    .hero-title em { font-style: normal; color: var(--blue); }
+    .hero-subtitle { font-size: 17px; color: var(--text-soft); max-width: 640px; margin: 0 auto 70px; line-height: 1.65; }
+
+    /* FEATURES */
+    .hero-features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+    .feature { text-decoration: none; color: var(--text); text-align: center; transition: transform 0.2s; }
+    .feature:hover { transform: translateY(-4px); }
+    .feature-icon { width: 68px; height: 68px; background: var(--blue-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 22px; color: var(--blue); }
+    .feature-title { font-family: 'Manrope', sans-serif; font-size: 13px; letter-spacing: 1.8px; text-transform: uppercase; font-weight: 800; color: var(--blue-deep); margin-bottom: 14px; }
+    .feature-desc { font-size: 14px; color: var(--text-soft); line-height: 1.55; max-width: 220px; margin: 0 auto; }
+
+    /* PILL NAV */
+    .pill-nav { display: flex; gap: 14px; justify-content: center; align-items: center; padding: 60px 24px 20px; flex-wrap: wrap; }
+    .pill { display: inline-flex; align-items: center; gap: 10px; background: var(--blue-deep); color: var(--white); padding: 10px 22px 10px 12px; border-radius: 999px; font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 800; letter-spacing: 1.4px; text-decoration: none; text-transform: uppercase; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; border: none; }
+    .pill:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(27,34,134,0.25); }
+    .pill.gold { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: #3A2705; }
+    .pill.gold:hover { box-shadow: 0 8px 20px rgba(201,162,39,0.35); }
+    .pill-icon { background: var(--white); color: var(--blue-deep); padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; min-width: 32px; }
+    .pill.gold .pill-icon { background: #FFF6DC; color: #7A5300; }
+
+    /* CONTAINER */
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+    .section { padding: 60px 0 40px; }
+
+    /* PRODUCT REMINDER */
+    .product-reminder { background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 32px 40px; display: grid; grid-template-columns: 200px 1fr; gap: 32px; align-items: center; box-shadow: 0 6px 22px rgba(27,34,134,0.06); }
+    .product-reminder img { width: 100%; border-radius: 14px; background: var(--off-white); }
+    .product-reminder-label { font-family: 'Manrope', sans-serif; font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--blue); font-weight: 800; margin-bottom: 10px; }
+    .product-reminder-name { font-family: 'Manrope', sans-serif; font-size: 24px; font-weight: 800; color: var(--blue-deep); margin-bottom: 12px; line-height: 1.25; letter-spacing: -0.3px; }
+    .product-reminder-name span { color: var(--blue); font-style: italic; }
+    .product-reminder-desc { font-size: 14.5px; color: var(--text); line-height: 1.65; margin-bottom: 16px; }
+    .product-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .product-tag { background: var(--blue-pale); color: var(--blue-deep); padding: 6px 12px; border-radius: 999px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.3px; font-family: 'Manrope', sans-serif; }
+
+    /* CYCLE COULEURS */
+    .cycle-card { background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 40px 32px; margin-top: 26px; text-align: center; box-shadow: 0 6px 22px rgba(27,34,134,0.06); }
+    .cycle-eyebrow { display: inline-block; background: linear-gradient(135deg, var(--violet), #A77CE8); color: var(--white); font-family: 'Manrope', sans-serif; font-size: 10.5px; letter-spacing: 2.4px; text-transform: uppercase; font-weight: 800; padding: 7px 16px; border-radius: 999px; margin-bottom: 18px; }
+    .cycle-title { font-family: 'Manrope', sans-serif; font-size: 24px; font-weight: 800; color: var(--blue-deep); line-height: 1.2; margin-bottom: 22px; letter-spacing: -0.3px; }
+    .cycle-img { max-width: 780px; width: 100%; margin: 0 auto 20px; display: block; border-radius: 12px; }
+    .cycle-text { font-size: 14.5px; color: var(--text-soft); line-height: 1.65; max-width: 640px; margin: 0 auto; }
+
+    /* FOOTER */
+    .footer { background: var(--blue-deep); color: rgba(255,255,255,0.7); padding: 40px 32px; text-align: center; margin-top: 100px; font-size: 13px; }
+
+    @media (max-width: 900px) {
+      .site-brand { font-size: 15px; letter-spacing: 3px; }
+      .site-brand .divider { margin: 0 10px; }
+      .hero { padding: 50px 20px 30px; }
+      .hero-title { font-size: 34px; }
+      .hero-features { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
+      .product-reminder { grid-template-columns: 1fr; text-align: center; }
+      .product-reminder img { max-width: 200px; margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-brand">SpotMyUV <span class="divider">×</span> Sesame</div>
+    <div class="site-tag">Programme affiliés · TikTok Shop France</div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-eyebrow">Méthode Créative TikTok Shop</div>
+    <h1 class="hero-title">Vidéos, hooks, formats :<br>tout ce qui <em>fait vendre.</em></h1>
+    <p class="hero-subtitle">Un programme piloté par Sesame pour les créateurs SpotMyUV. Chaque semaine, on décrypte tout ce qui fait vendre sur TikTok Shop — vidéos, hooks et formats à reproduire dans ta vitrine.</p>
+
+    <div class="hero-features">
+      <a class="feature" href="#coming-soon">
+        <div class="feature-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M10 9l5 3-5 3V9z" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <div class="feature-title">Analyse de vidéos</div>
+        <div class="feature-desc">Les vidéos qui performent, décortiquées : transcript, contexte et ce qui les fait vendre.</div>
+      </a>
+      <a class="feature" href="#coming-soon">
+        <div class="feature-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v6M6 9c0 3.3 2.7 6 6 6s6-2.7 6-6"/><path d="M6 15l6 6 6-6"/></svg>
+        </div>
+        <div class="feature-title">Hooks à reproduire</div>
+        <div class="feature-desc">Les accroches qui captent l'attention dans les 3 premières secondes — à copier dans tes vidéos.</div>
+      </a>
+      <a class="feature" href="#coming-soon">
+        <div class="feature-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
+        </div>
+        <div class="feature-title">Formats</div>
+        <div class="feature-desc">Les structures qui convertissent cette semaine — à filmer dès aujourd'hui.</div>
+      </a>
+      <a class="feature" href="#coming-soon">
+        <div class="feature-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="M4 8h16M8 4v16"/></svg>
+        </div>
+        <div class="feature-title">Bibliothèque</div>
+        <div class="feature-desc">Vidéos performantes du marché — transcript, traduction FR et analyse hook/format/CTA.</div>
+      </a>
+    </div>
+
+    <nav class="pill-nav">
+      <a class="pill gold" href="#coming-soon"><span class="pill-icon">📚</span> Bibliothèque <span style="margin-left:6px;">→</span></a>
+    </nav>
+  </section>
+
+  <main class="container">
+    <section class="section" id="coming-soon">
+      <div class="product-reminder">
+        <img src="product.png" alt="SpotMyUV — Sticker UV qui change de couleur">
+        <div>
+          <div class="product-reminder-label">📌 Le produit</div>
+          <div class="product-reminder-name">SpotMyUV — <span>Le sticker UV qui te dit quand recrémer.</span></div>
+          <p class="product-reminder-desc">Un petit adhésif qui devient <strong>violet</strong> quand tu es exposé au soleil — signal simple pour remettre ta crème solaire au bon moment. Résistant à l'eau, dure 12h, testé par des dermatologues, safe pour toute la famille.</p>
+          <div class="product-tags">
+            <span class="product-tag">💧 Résistant à l'eau</span>
+            <span class="product-tag">⏱ Dure 12 h</span>
+            <span class="product-tag">👨‍⚕️ Testé par dermatologues</span>
+            <span class="product-tag">👶 Safe famille</span>
+            <span class="product-tag">☀️ Toutes crèmes solaires</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cycle-card">
+        <div class="cycle-eyebrow">🎨 Le cycle des couleurs</div>
+        <h3 class="cycle-title">Transparent = protégée · Violet = c'est le moment de recrémer</h3>
+        <img class="cycle-img" src="cycle.png" alt="Cycle des couleurs SpotMyUV">
+        <p class="cycle-text">Colle ton Spot sur peau sèche, applique ta crème solaire par-dessus. Il devient <strong>transparent</strong> quand ta peau est protégée. Dès qu'il vire au <strong>violet</strong>, remets une couche — c'est aussi simple que ça.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    SpotMyUV × Sesame · Programme affiliés TikTok Shop France
+  </footer>
+
+</body>
+</html>
