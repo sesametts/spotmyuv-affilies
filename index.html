@@ -107,6 +107,12 @@
     .mech-step:hover { transform: translateY(-4px); box-shadow: 0 10px 26px rgba(27,34,134,0.10); }
     .mech-step-num { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--blue-deep); color: var(--white); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 800; }
     .mech-icon { font-size: 42px; margin: 10px 0 14px; }
+    .mech-dot { width: 54px; height: 54px; border-radius: 50%; margin: 14px auto 18px; display: block; }
+    .mech-dot.violet { background: radial-gradient(circle at 30% 30%, #B48CF0, var(--violet) 70%); box-shadow: 0 6px 18px rgba(123,79,224,0.35); }
+    .mech-dot.transparent { background: rgba(180, 210, 240, 0.25); border: 2px dashed #6B9CC7; box-shadow: inset 0 0 0 6px rgba(255,255,255,0.6); }
+    .mech-badge { display: inline-block; font-family: 'Manrope', sans-serif; font-size: 10px; letter-spacing: 1.4px; text-transform: uppercase; font-weight: 800; padding: 4px 10px; border-radius: 999px; margin-bottom: 10px; }
+    .mech-badge.violet { background: rgba(123,79,224,0.14); color: var(--violet); }
+    .mech-badge.transparent { background: rgba(42,157,110,0.14); color: #2A9D6E; }
     .mech-step-title { font-family: 'Manrope', sans-serif; font-size: 13.5px; font-weight: 800; color: var(--blue-deep); letter-spacing: 0.3px; text-transform: uppercase; margin-bottom: 10px; }
     .mech-step-desc { font-size: 13.5px; color: var(--text); line-height: 1.55; }
     .mech-step.violet { background: linear-gradient(135deg, #F5F0FF, var(--white)); border-color: #D8C5F5; }
@@ -219,45 +225,66 @@
         <div class="warning-body">
           <p>Vous avez un <strong>produit viral entre les mains</strong>, en pleine saison — et vous montrez juste la boîte.</p>
           <p>Les gens veulent voir la <strong>TRANSFORMATION</strong>, pas l'emballage.</p>
-          <p>Les gens veulent qu'on leur parle de leur <strong>peur</strong> (coup de soleil, enfants pas protégés, peau qui vieillit), pas des specs du produit.</p>
+          <p>Les gens veulent qu'on leur parle de leur <strong>peur</strong> — coup de soleil, enfants pas protégés, peau qui vieillit.</p>
+        </div>
+      </div>
+
+      <!-- PRODUIT -->
+      <div class="product-reminder" style="margin-top: 30px;">
+        <img src="product.png" alt="SpotMyUV — Sticker UV qui change de couleur">
+        <div>
+          <div class="product-reminder-label">📌 Le produit</div>
+          <div class="product-reminder-name">SpotMyUV — <span>Le sticker UV qui te dit quand recrémer.</span></div>
+          <p class="product-reminder-desc">Un petit adhésif qui devient <strong>violet</strong> quand tu es exposé au soleil — signal simple pour remettre ta crème solaire au bon moment. Résistant à l'eau, dure 12h, testé par des dermatologues, safe pour toute la famille.</p>
+          <div class="product-tags">
+            <span class="product-tag">💧 Résistant à l'eau</span>
+            <span class="product-tag">⏱ Dure 12 h</span>
+            <span class="product-tag">👨‍⚕️ Testé par dermatologues</span>
+            <span class="product-tag">👶 Safe famille</span>
+            <span class="product-tag">☀️ Toutes crèmes solaires</span>
+          </div>
         </div>
       </div>
 
       <!-- MÉCANISME · 4 étapes -->
       <div class="mech-header">
-        <div class="mech-eyebrow">🔬 Le vrai mécanisme</div>
-        <h2 class="mech-title">Le mécanisme (que personne n'explique bien)</h2>
-        <p class="mech-subtitle">Voilà ce qu'il faut <strong>FILMER dans tes vidéos</strong> — pas la boîte. La transformation du sticker, c'est CE qui vend.</p>
+        <div class="mech-eyebrow">Le vrai mécanisme</div>
+        <h2 class="mech-title">Le mécanisme que personne n'explique bien</h2>
+        <p class="mech-subtitle">Voilà ce qu'il faut <strong>FILMER dans tes vidéos</strong> — pas la boîte. La transformation du sticker, c'est ça qui vend.</p>
       </div>
 
       <div class="mech-grid">
         <div class="mech-step violet">
           <div class="mech-step-num">1</div>
-          <div class="mech-icon">🟣</div>
+          <span class="mech-dot violet"></span>
+          <div class="mech-badge violet">Violet</div>
           <div class="mech-step-title">Tu colles ton Spot</div>
-          <div class="mech-step-desc">Le sticker apparaît <strong>VIOLET</strong> — signal : peau non protégée, UV présents.</div>
+          <div class="mech-step-desc">Le sticker apparaît <strong>violet</strong> — signal : peau non protégée, UV présents.</div>
         </div>
         <div class="mech-step transparent">
           <div class="mech-step-num">2</div>
-          <div class="mech-icon">☀️</div>
+          <span class="mech-dot transparent"></span>
+          <div class="mech-badge transparent">Transparent</div>
           <div class="mech-step-title">Tu appliques ta crème</div>
-          <div class="mech-step-desc">Quelques minutes plus tard, le Spot devient <strong>TRANSPARENT</strong> — tu es protégé·e.</div>
+          <div class="mech-step-desc">Quelques minutes plus tard, le Spot devient <strong>transparent</strong> — tu es protégé·e.</div>
         </div>
         <div class="mech-step transparent">
           <div class="mech-step-num">3</div>
-          <div class="mech-icon">🏖️</div>
+          <span class="mech-dot transparent"></span>
+          <div class="mech-badge transparent">Transparent</div>
           <div class="mech-step-title">Tu profites du soleil</div>
           <div class="mech-step-desc">Le Spot reste transparent — la protection tient bon.</div>
         </div>
         <div class="mech-step violet">
           <div class="mech-step-num">4</div>
-          <div class="mech-icon">🟣</div>
+          <span class="mech-dot violet"></span>
+          <div class="mech-badge violet">Violet</div>
           <div class="mech-step-title">Après quelques heures</div>
-          <div class="mech-step-desc">Le Spot commence à re-virer au <strong>VIOLET</strong> — remets de la crème maintenant.</div>
+          <div class="mech-step-desc">Le Spot commence à re-virer au <strong>violet</strong> — remets de la crème maintenant.</div>
         </div>
       </div>
 
-      <div class="mech-step-bottom">🎥 <strong>Ça</strong>, c'est ce qu'il faut filmer. La transformation en direct = ton meilleur argument de vente.</div>
+      <div class="mech-step-bottom"><strong>Voilà ce qu'il faut filmer.</strong> La transformation en direct = ton meilleur argument de vente.</div>
 
       <!-- DOULEURS · 4 cards -->
       <div class="pain-header">
@@ -305,28 +332,6 @@
         </div>
       </div>
 
-      <div class="product-reminder" style="margin-top: 40px;">
-        <img src="product.png" alt="SpotMyUV — Sticker UV qui change de couleur">
-        <div>
-          <div class="product-reminder-label">📌 Le produit</div>
-          <div class="product-reminder-name">SpotMyUV — <span>Le sticker UV qui te dit quand recrémer.</span></div>
-          <p class="product-reminder-desc">Un petit adhésif qui devient <strong>violet</strong> quand tu es exposé au soleil — signal simple pour remettre ta crème solaire au bon moment. Résistant à l'eau, dure 12h, testé par des dermatologues, safe pour toute la famille.</p>
-          <div class="product-tags">
-            <span class="product-tag">💧 Résistant à l'eau</span>
-            <span class="product-tag">⏱ Dure 12 h</span>
-            <span class="product-tag">👨‍⚕️ Testé par dermatologues</span>
-            <span class="product-tag">👶 Safe famille</span>
-            <span class="product-tag">☀️ Toutes crèmes solaires</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="cycle-card">
-        <div class="cycle-eyebrow">🎨 Le cycle des couleurs</div>
-        <h3 class="cycle-title">Transparent = protégée · Violet = c'est le moment de recrémer</h3>
-        <img class="cycle-img" src="cycle.png" alt="Cycle des couleurs SpotMyUV">
-        <p class="cycle-text">Colle ton Spot sur peau sèche, applique ta crème solaire par-dessus. Il devient <strong>transparent</strong> quand ta peau est protégée. Dès qu'il vire au <strong>violet</strong>, remets une couche — c'est aussi simple que ça.</p>
-      </div>
     </section>
   </main>
 
