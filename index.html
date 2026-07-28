@@ -192,6 +192,33 @@
     @media (max-width: 900px) { .biblio-grid { grid-template-columns: repeat(2, 1fr); } .lib-modal-inner { grid-template-columns: 1fr; } .lib-modal-video-wrap video { max-height: 60vh; aspect-ratio: auto; } }
     @media (max-width: 480px) { .biblio-grid { grid-template-columns: 1fr; } }
 
+    /* BIBLIO SUB-SECTIONS · Vidéos / Images */
+    .biblio-subsection { margin-top: 50px; }
+    .biblio-sub-title { font-family: 'Manrope', sans-serif; font-size: 22px; font-weight: 800; color: var(--blue-deep); letter-spacing: -0.3px; margin: 0 0 8px; display: flex; align-items: center; gap: 10px; }
+    .biblio-sub-intro { font-size: 14.5px; color: var(--text-soft); line-height: 1.6; margin-bottom: 26px; max-width: 640px; }
+
+    /* HOOK GROUPS · Images par douleur */
+    .hook-group { margin-bottom: 42px; background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 24px 28px; }
+    .hook-group-header { margin-bottom: 18px; }
+    .hook-group-emoji { font-size: 26px; margin-bottom: 6px; display: block; }
+    .hook-group-title { font-family: 'Manrope', sans-serif; font-size: 18px; font-weight: 800; color: var(--blue-deep); letter-spacing: -0.2px; margin-bottom: 6px; }
+    .hook-group-desc { font-size: 13.5px; color: var(--text-soft); line-height: 1.55; }
+    .hook-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+    .hook-card { border-radius: 10px; overflow: hidden; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; background: var(--off-white); border: 1px solid var(--border); aspect-ratio: 1 / 1; }
+    .hook-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(27,34,134,0.14); }
+    .hook-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* IMG MODAL · lightbox spécifique aux images */
+    .img-modal { display: none; position: fixed; inset: 0; background: rgba(15,24,99,0.85); z-index: 999; padding: 30px 20px; overflow-y: auto; }
+    .img-modal.open { display: block; }
+    .img-modal-inner { background: var(--white); max-width: 1000px; margin: 0 auto; border-radius: 18px; overflow: hidden; display: grid; grid-template-columns: 1fr 400px; position: relative; }
+    .img-modal-photo { background: #000; display: flex; align-items: center; justify-content: center; padding: 20px; }
+    .img-modal-photo img { max-width: 100%; max-height: 80vh; object-fit: contain; border-radius: 8px; }
+    .img-modal-body { padding: 30px 28px; overflow-y: auto; max-height: 85vh; }
+    .img-modal-close { position: absolute; top: 12px; right: 12px; background: var(--white); border: 1px solid var(--border); border-radius: 50%; width: 36px; height: 36px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; z-index: 2; }
+    @media (max-width: 900px) { .hook-grid { grid-template-columns: repeat(3, 1fr); } .img-modal-inner { grid-template-columns: 1fr; } .img-modal-photo img { max-height: 50vh; } }
+    @media (max-width: 480px) { .hook-grid { grid-template-columns: repeat(2, 1fr); } }
+
     /* FOOTER */
     .footer { background: var(--blue-deep); color: rgba(255,255,255,0.7); padding: 40px 32px; text-align: center; margin-top: 100px; font-size: 13px; }
 
@@ -342,18 +369,141 @@
     <!-- BIBLIOTHÈQUE -->
     <section class="biblio-section" id="bibliotheque">
       <div class="biblio-header">
-        <div class="biblio-eyebrow">📚 Bibliothèque · Vidéos référence</div>
-        <h2 class="biblio-title">7 vidéos qui cartonnent sur les stickers UV</h2>
-        <p class="biblio-intro">Toutes marques confondues — inspire-toi des formats qui vendent vraiment ce type de produit. Clique sur une vignette pour voir la vidéo <strong>+ analyse hook / format / CTA + traduction FR</strong>.</p>
+        <div class="biblio-eyebrow">📚 Bibliothèque · Références</div>
+        <h2 class="biblio-title">Tout ce qui cartonne sur les stickers UV</h2>
+        <p class="biblio-intro">Vidéos qui performent + images-hooks à utiliser comme premier frame pour capter les 3 premières secondes.</p>
       </div>
-      <div class="biblio-grid">
-        <div class="biblio-card" data-vid="1"><img class="biblio-thumb" src="lib1.jpg" alt="Vidéo 1"><div class="biblio-card-num">#1</div></div>
-        <div class="biblio-card" data-vid="2"><img class="biblio-thumb" src="lib2.jpg" alt="Vidéo 2"><div class="biblio-card-num">#2</div></div>
-        <div class="biblio-card" data-vid="3"><img class="biblio-thumb" src="lib3.jpg" alt="Vidéo 3"><div class="biblio-card-num">#3</div></div>
-        <div class="biblio-card" data-vid="4"><img class="biblio-thumb" src="lib4.jpg" alt="Vidéo 4"><div class="biblio-card-num">#4</div></div>
-        <div class="biblio-card" data-vid="5"><img class="biblio-thumb" src="lib5.jpg" alt="Vidéo 5"><div class="biblio-card-num">#5</div></div>
-        <div class="biblio-card" data-vid="6"><img class="biblio-thumb" src="lib6.jpg" alt="Vidéo 6"><div class="biblio-card-num">#6</div></div>
-        <div class="biblio-card" data-vid="7"><img class="biblio-thumb" src="lib7.jpg" alt="Vidéo 7"><div class="biblio-card-num">#7</div></div>
+
+      <!-- SUB-SECTION 1 · VIDÉOS -->
+      <div class="biblio-subsection">
+        <h3 class="biblio-sub-title">🎬 Vidéos référence</h3>
+        <p class="biblio-sub-intro">7 vidéos qui cartonnent — clique sur une vignette pour voir la vidéo + analyse hook / format / CTA + traduction FR.</p>
+        <div class="biblio-grid">
+          <div class="biblio-card" data-vid="1"><img class="biblio-thumb" src="lib1.jpg" alt="Vidéo 1"><div class="biblio-card-num">#1</div></div>
+          <div class="biblio-card" data-vid="2"><img class="biblio-thumb" src="lib2.jpg" alt="Vidéo 2"><div class="biblio-card-num">#2</div></div>
+          <div class="biblio-card" data-vid="3"><img class="biblio-thumb" src="lib3.jpg" alt="Vidéo 3"><div class="biblio-card-num">#3</div></div>
+          <div class="biblio-card" data-vid="4"><img class="biblio-thumb" src="lib4.jpg" alt="Vidéo 4"><div class="biblio-card-num">#4</div></div>
+          <div class="biblio-card" data-vid="5"><img class="biblio-thumb" src="lib5.jpg" alt="Vidéo 5"><div class="biblio-card-num">#5</div></div>
+          <div class="biblio-card" data-vid="6"><img class="biblio-thumb" src="lib6.jpg" alt="Vidéo 6"><div class="biblio-card-num">#6</div></div>
+          <div class="biblio-card" data-vid="7"><img class="biblio-thumb" src="lib7.jpg" alt="Vidéo 7"><div class="biblio-card-num">#7</div></div>
+        </div>
+      </div>
+
+      <!-- SUB-SECTION 2 · IMAGES HOOKS -->
+      <div class="biblio-subsection">
+        <h3 class="biblio-sub-title">📸 Images-hooks à utiliser</h3>
+        <p class="biblio-sub-intro">33 photos réalistes classées par douleur + public cible. Utilise-les comme <strong>premier frame de ta vidéo</strong> pour créer un pain-point instantané. Clique sur une image pour voir le texte d'overlay + script suggéré.</p>
+
+        <!-- 1 · Culpa parental -->
+        <div class="hook-group">
+          <div class="hook-group-header">
+            <span class="hook-group-emoji">👨‍👩‍👧</span>
+            <h4 class="hook-group-title">Culpa parental — mères & pères</h4>
+            <p class="hook-group-desc">Public : parents qui oublient d'appliquer/re-appliquer sur les enfants. Douleur : la culpabilité de voir son enfant brûlé.</p>
+          </div>
+          <div class="hook-grid">
+            <div class="hook-card" data-hook="1"><img src="hook1_1.jpg" alt=""></div>
+            <div class="hook-card" data-hook="1"><img src="hook1_2.jpg" alt=""></div>
+            <div class="hook-card" data-hook="1"><img src="hook1_3.jpg" alt=""></div>
+            <div class="hook-card" data-hook="1"><img src="hook1_4.jpg" alt=""></div>
+            <div class="hook-card" data-hook="1"><img src="hook1_5.jpg" alt=""></div>
+            <div class="hook-card" data-hook="1"><img src="hook1_6.jpg" alt=""></div>
+          </div>
+        </div>
+
+        <!-- 2 · Peau qui pèle -->
+        <div class="hook-group">
+          <div class="hook-group-header">
+            <span class="hook-group-emoji">🩹</span>
+            <h4 class="hook-group-title">Peau qui pèle</h4>
+            <p class="hook-group-desc">Public : tout le monde. Douleur : l'humiliation du peeling après une brûlure — visuellement fort, très TikTok.</p>
+          </div>
+          <div class="hook-grid">
+            <div class="hook-card" data-hook="2"><img src="hook2_1.jpg" alt=""></div>
+            <div class="hook-card" data-hook="2"><img src="hook2_2.jpg" alt=""></div>
+            <div class="hook-card" data-hook="2"><img src="hook2_3.jpg" alt=""></div>
+          </div>
+        </div>
+
+        <!-- 3 · Nez et joues rouges -->
+        <div class="hook-group">
+          <div class="hook-group-header">
+            <span class="hook-group-emoji">🍅</span>
+            <h4 class="hook-group-title">Nez et joues rouges</h4>
+            <p class="hook-group-desc">Public : jeunes + adultes qui sous-estiment le soleil. Douleur : brûlé en 1 h sans s'en rendre compte.</p>
+          </div>
+          <div class="hook-grid">
+            <div class="hook-card" data-hook="3"><img src="hook3_1.jpg" alt=""></div>
+            <div class="hook-card" data-hook="3"><img src="hook3_2.jpg" alt=""></div>
+            <div class="hook-card" data-hook="3"><img src="hook3_3.jpg" alt=""></div>
+            <div class="hook-card" data-hook="3"><img src="hook3_4.jpg" alt=""></div>
+            <div class="hook-card" data-hook="3"><img src="hook3_5.jpg" alt=""></div>
+            <div class="hook-card" data-hook="3"><img src="hook3_6.jpg" alt=""></div>
+          </div>
+        </div>
+
+        <!-- 4 · Taches sur les mains -->
+        <div class="hook-group">
+          <div class="hook-group-header">
+            <span class="hook-group-emoji">👐</span>
+            <h4 class="hook-group-title">Taches sur les mains (30-60+)</h4>
+            <p class="hook-group-desc">Public : femmes et hommes 30+. Douleur : les mains vieillissent plus vite que le visage — on oublie tout le temps d'y mettre de la crème.</p>
+          </div>
+          <div class="hook-grid">
+            <div class="hook-card" data-hook="4"><img src="hook4_1.jpg" alt=""></div>
+            <div class="hook-card" data-hook="4"><img src="hook4_2.jpg" alt=""></div>
+            <div class="hook-card" data-hook="4"><img src="hook4_3.jpg" alt=""></div>
+            <div class="hook-card" data-hook="4"><img src="hook4_4.jpg" alt=""></div>
+          </div>
+        </div>
+
+        <!-- 5 · Marque de maillot brûlée -->
+        <div class="hook-group">
+          <div class="hook-group-header">
+            <span class="hook-group-emoji">👙</span>
+            <h4 class="hook-group-title">Marque de maillot brûlée — vacances gâchées</h4>
+            <p class="hook-group-desc">Public : vacanciers, voyageurs, jeunes adultes. Douleur : rentrer de vacances avec des marques rouges et douloureuses.</p>
+          </div>
+          <div class="hook-grid">
+            <div class="hook-card" data-hook="5"><img src="hook5_1.jpg" alt=""></div>
+            <div class="hook-card" data-hook="5"><img src="hook5_2.jpg" alt=""></div>
+            <div class="hook-card" data-hook="5"><img src="hook5_3.jpg" alt=""></div>
+            <div class="hook-card" data-hook="5"><img src="hook5_4.jpg" alt=""></div>
+            <div class="hook-card" data-hook="5"><img src="hook5_5.jpg" alt=""></div>
+            <div class="hook-card" data-hook="5"><img src="hook5_6.jpg" alt=""></div>
+          </div>
+        </div>
+
+        <!-- 6 · Ados au soleil sur leur phone -->
+        <div class="hook-group">
+          <div class="hook-group-header">
+            <span class="hook-group-emoji">📱</span>
+            <h4 class="hook-group-title">Perdu sur son phone au soleil</h4>
+            <p class="hook-group-desc">Public : jeunes 18-30. Douleur : perdu dans TikTok/scroll au soleil, on ne sent pas la brûlure arriver.</p>
+          </div>
+          <div class="hook-grid">
+            <div class="hook-card" data-hook="6"><img src="hook6_1.jpg" alt=""></div>
+            <div class="hook-card" data-hook="6"><img src="hook6_2.jpg" alt=""></div>
+            <div class="hook-card" data-hook="6"><img src="hook6_3.jpg" alt=""></div>
+            <div class="hook-card" data-hook="6"><img src="hook6_4.jpg" alt=""></div>
+          </div>
+        </div>
+
+        <!-- 7 · Sport outdoor -->
+        <div class="hook-group">
+          <div class="hook-group-header">
+            <span class="hook-group-emoji">🏃</span>
+            <h4 class="hook-group-title">Sport outdoor — coureurs, tennis, cyclisme</h4>
+            <p class="hook-group-desc">Public : sportifs outdoor. Douleur : concentré sur la performance, on oublie systématiquement le SPF.</p>
+          </div>
+          <div class="hook-grid">
+            <div class="hook-card" data-hook="7"><img src="hook7_1.jpg" alt=""></div>
+            <div class="hook-card" data-hook="7"><img src="hook7_2.jpg" alt=""></div>
+            <div class="hook-card" data-hook="7"><img src="hook7_3.jpg" alt=""></div>
+            <div class="hook-card" data-hook="7"><img src="hook7_4.jpg" alt=""></div>
+          </div>
+        </div>
+
       </div>
     </section>
   </main>
@@ -478,7 +628,101 @@
     document.getElementById('lib-modal').addEventListener('click', e => {
       if (e.target.id === 'lib-modal') closeLibModal();
     });
+
+    // === IMAGES HOOKS · modal ===
+    window.__HOOK_DATA__ = {
+      "1": {
+        "emoji": "👨‍👩‍👧",
+        "title": "Culpa parental",
+        "public": "Parents (mères & pères) qui oublient d'appliquer / réappliquer sur les enfants",
+        "overlay": "« J'ai encore oublié… » · « Trop tard. » · « Ma pire erreur de parent cet été »",
+        "script": "« Combien de fois tu t'es dit " + '“' + "je le remets dans 20 minutes" + '”' + " ? Avec SpotMyUV plus jamais. Le sticker devient violet = c'est le rappel visuel que ton enfant a besoin de crème MAINTENANT. »"
+      },
+      "2": {
+        "emoji": "🩹",
+        "title": "Peau qui pèle",
+        "public": "Tout le monde — visuellement très fort, effet " + '“' + "satisfying-but-painful" + '”' + " qui cartonne sur TikTok",
+        "overlay": "« Encore une semaine de peeling… » · « Le prix d'une journée sans crème. » · « J'avais promis que ça n'arriverait plus »",
+        "script": "« Peeling après le soleil = tu as brûlé sans t'en rendre compte. Le SpotMyUV te dit AVANT que ça arrive. Violet = tu remets. Simple. »"
+      },
+      "3": {
+        "emoji": "🍅",
+        "title": "Nez et joues rouges",
+        "public": "Jeunes + adultes qui sous-estiment le soleil (" + '“' + "il ne fait pas si chaud" + '”' + ")",
+        "overlay": "« 1 h dehors et voilà. » · « J'ai pensé que ça allait. » · « POV : tu sors sans crème »",
+        "script": "« Tu penses que t'as encore de la crème sur toi ? Le SpotMyUV te confirme visuellement — violet = tu dois remettre, transparent = t'es protégé·e. Fini les brûlures surprise. »"
+      },
+      "4": {
+        "emoji": "👐",
+        "title": "Taches sur les mains",
+        "public": "Femmes & hommes 30+ conscients de l'anti-âge",
+        "overlay": "« Les mains vieillissent plus vite que le visage. » · « Personne ne t'a dit ? » · « Les taches d'aujourd'hui = le soleil d'il y a 10 ans »",
+        "script": "« Les taches sur les mains, c'est le soleil qui s'accumule depuis des années. Le SpotMyUV colle même sur les mains — aux endroits qu'on oublie tout le temps de crémer. »"
+      },
+      "5": {
+        "emoji": "👙",
+        "title": "Marque de maillot brûlée",
+        "public": "Vacanciers, voyageurs, personnes qui partent bientôt en vacances",
+        "overlay": "« Mes vacances gâchées. » · « Une seule journée sans SpotMyUV. » · « Le souvenir de vacances que personne ne veut »",
+        "script": "« Tu pars en vacances demain ? Prends UN pack SpotMyUV. Le sticker te dit quand recrémer AVANT que ta peau vire au homard. Tes vacances méritent mieux. »"
+      },
+      "6": {
+        "emoji": "📱",
+        "title": "Perdu sur son phone au soleil",
+        "public": "Jeunes 18-30, gros consommateurs de TikTok/Instagram",
+        "overlay": "« POV : tu penses que tu ne brûles pas. » · « L'algo te dévore plus vite que le soleil. » · « Encore 5 min de scroll… »",
+        "script": "« Perdu·e dans TikTok au soleil ? Le SpotMyUV te ramène à la réalité — dès qu'il devient violet, tu remets. Pas besoin de checker l'heure ou de deviner. »"
+      },
+      "7": {
+        "emoji": "🏃",
+        "title": "Sport outdoor",
+        "public": "Coureurs, cyclistes, tennis/padel, natation, tout sport outdoor",
+        "overlay": "« J'oublie toujours quand je cours. » · « Le soleil ne prend pas de pause. » · « Après 1 h de course : voilà. »",
+        "script": "« Sport outdoor = SPF non négociable. Le SpotMyUV colle sur ton bras, sue avec toi, résiste à l'eau, et te dit quand recrémer. Parfait pour runners, cyclistes, joueurs de tennis. »"
+      }
+    };
+
+    document.querySelectorAll('.hook-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const h = card.dataset.hook;
+        const d = window.__HOOK_DATA__[h];
+        if (!d) return;
+        const src = card.querySelector('img').src;
+        document.getElementById('img-modal-img').src = src;
+        document.getElementById('img-modal-emoji').textContent = d.emoji;
+        document.getElementById('img-modal-title').textContent = d.title;
+        document.getElementById('img-modal-public').textContent = d.public;
+        document.getElementById('img-modal-overlay').textContent = d.overlay;
+        document.getElementById('img-modal-script').textContent = d.script;
+        document.getElementById('img-modal').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    function closeImgModal() {
+      document.getElementById('img-modal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('img-modal').addEventListener('click', e => {
+      if (e.target.id === 'img-modal') closeImgModal();
+    });
   </script>
+
+  <!-- IMG MODAL · lightbox images-hooks -->
+  <div class="img-modal" id="img-modal">
+    <div class="img-modal-inner">
+      <button class="img-modal-close" onclick="closeImgModal()">×</button>
+      <div class="img-modal-photo">
+        <img id="img-modal-img" src="" alt="">
+      </div>
+      <div class="img-modal-body">
+        <span class="lib-modal-tag"><span id="img-modal-emoji">📸</span></span>
+        <h3 class="lib-modal-title" id="img-modal-title">Titre</h3>
+        <div class="lib-block"><div class="lib-block-label">🎯 Public cible</div><div class="lib-block-text" id="img-modal-public">—</div></div>
+        <div class="lib-block"><div class="lib-block-label">✏️ Texte à mettre en overlay</div><div class="lib-block-text" id="img-modal-overlay">—</div></div>
+        <div class="lib-block notes"><div class="lib-block-label">💡 Script de vidéo suggéré</div><div class="lib-block-text" id="img-modal-script">—</div></div>
+      </div>
+    </div>
+  </div>
 
   <footer class="footer">
     SpotMyUV × Sesame · Programme affiliés TikTok Shop France
